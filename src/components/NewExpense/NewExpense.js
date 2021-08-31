@@ -1,5 +1,5 @@
-import './NewExpense.css'
 import ExpenseForm from './ExpenseForm'
+import NewExpenseWrapper from './NewExpenseWrapper'
 import { useState } from 'react'
 function NewExpense(props){
 
@@ -20,10 +20,10 @@ function NewExpense(props){
 
     }
     return (
-        <div className="new-expense">
+        <NewExpenseWrapper>
             {form?<ExpenseForm bottomUp = {expenseDataHandler}/>:<button onClick={()=>showForm(true)}>Add New Expense</button>}
              
-        </div>
+        </NewExpenseWrapper>
     )
 
 }
