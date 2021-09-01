@@ -28,15 +28,38 @@ export default function Expenses(props){
           amount: 450,
           date: new Date(2015, 5, 12),
         },
+        {
+          id:'e5',
+          title:'Chair',
+          amount:50,
+          date: new Date(2015,9,15)
+        },
+        {
+          id:'e6',
+          title:'Sound system',
+          amount:800,
+          date: new Date(2015,10,12),
+        }
       ]);
 
       const [filteredYear,setFilteredYear] = useState('2015');
       //expenses.push(props.sendexpense)
 
+      
+
       function pullExpenseData(arg){
         //alert(typeof(arg.date))
         
-        setExpense([...expenses,arg])
+        if(typeof(arg)==="string"){
+          //showModal(true)
+          props.modalHolder(arg)
+
+        }
+        else{
+          setExpense([...expenses,arg])
+
+        }
+        
         //alert(JSON.stringify(arg))
       }
       
