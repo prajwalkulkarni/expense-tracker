@@ -6,16 +6,24 @@ function NewExpense(props){
     const [id,setId] = useState(0)
     const [form,showForm] = useState(false);
     
+    
 
     function expenseDataHandler(expenseData){
-        const appendIDObj = {
-            ...expenseData,
-            id: id
-        }
-        setId(p=>p+1)
 
-        
-        props.callback(appendIDObj)
+        if(typeof(expenseData)==="string"){
+            props.callback(expenseData)
+
+        }
+        else{
+            const appendIDObj = {
+                ...expenseData,
+                id: id
+            }
+            setId(p=>p+1)
+    
+            
+            props.callback(appendIDObj)
+        }
         //return appendID
 
     }

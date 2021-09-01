@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './ExpenseForm.css'
-
+import Modal from '../Modal/Modal'
 export default function ExpenseForm(props){
 
     const [userInput,inputHandler] = useState({
@@ -8,6 +8,8 @@ export default function ExpenseForm(props){
         amount:0,
         date:''
     })
+
+    
 
     function submitHandler(e){
         e.preventDefault();
@@ -17,9 +19,25 @@ export default function ExpenseForm(props){
             amount: userInput.amount,
             date: new Date(userInput.date)
         }
+        let res=""
+        let titleWarning = "Title should be of 2 characters atleast.\n"
+        let amountWarning = "Minimum amount cannot be less than $1.\n"
+        let dateWarning = "Please enter a valid date.\n"
+        if(userInput.title.length<1){
+            res+=titleWarning
 
-        if(userInput.title.length<1||userInput.amount<1||userInput.date.length<1){
-            alert("One or more fields empty")
+        }
+        if(userInput.amount<1)
+        {
+            res+=amountWarning
+        }
+        if(userInput.date.length<1){
+            res+=dateWarning
+        }
+
+        if(res.length>1){
+            props.bottomUp(res)
+            
         }
         else{
             inputHandler({
@@ -38,7 +56,9 @@ export default function ExpenseForm(props){
     }
 
     return (
+        
         <form onSubmit={submitHandler}>
+            
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>

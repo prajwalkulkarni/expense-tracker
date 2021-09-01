@@ -22,6 +22,25 @@
     max-width: 100%;
   }
   
+  button{
+    width: 100%;
+  }
+  .new-expense__controls .new-expense__control{
+    width: 100%;
+  }
 .new-expense__actions {
+    
     text-align: center;
   }
+
+@media  (min-width: 768px){
+
+  button {
+    width: auto;
+  }
+
+  .new-expense__controls .new-expense__control{
+    width: auto;
+  }
+  
+}
