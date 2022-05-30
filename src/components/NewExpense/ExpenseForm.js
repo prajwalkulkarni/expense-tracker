@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './ExpenseForm.css'
-import Modal from '../Modal/Modal'
 export default function ExpenseForm(props){
 
     const [userInput,inputHandler] = useState({
